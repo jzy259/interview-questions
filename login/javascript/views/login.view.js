@@ -1,8 +1,8 @@
-// a login form
+// javascript/view/login.view.js
 Application.LoginView = Backbone.View.extend({
-
+	// get login template
 	template : _.template(Application.getTemplate("login.html")),
-
+	
 	events : {
 		"click #btn_submit" : "login"
 	},

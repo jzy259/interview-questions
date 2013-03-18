@@ -1,5 +1,10 @@
+// javascript/main.js
+
+
+// application base class
+// place helper functions in here
 window.Application = {
-	// synchronously load a template
+	// synchronously load a template from templates directory
 	getTemplate : function(name) {
 		var self = this, url;
 		self.assert(_.isUndefined(name) || name == "", "Template name is required"); // check for template name
