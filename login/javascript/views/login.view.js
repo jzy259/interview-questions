@@ -1,4 +1,3 @@
-
 // a login form
 Application.LoginView = Backbone.View.extend({
 
@@ -18,15 +17,20 @@ Application.LoginView = Backbone.View.extend({
 	},
 
 	// login
-	login : function(event) {		
+	login : function(event) {
 		var self = this, data;
-		event.preventDefault(); // prevent form from reloading the page		
-		$('.alert').hide(); // hide the alerts
+		event.preventDefault();
+		// prevent form from reloading the page
+		$('.alert').hide();
+		// hide the alerts
+		$("#login_form input").removeClass('invalid');
+		// reset fields
+		// get the data from the form inputs
 		data = {
 			"username" : $("#username").val(),
 			"password" : $("#password").val()
 		};
-		
+
 		// submit the form
 		$.ajax({
 			url : "login.php",
@@ -36,14 +40,16 @@ Application.LoginView = Backbone.View.extend({
 			success : function(response) {
 				// failure
 				if (response.success != "1") {
-					// reset form fields
-					$("#username").val("").focus();
-					$("#password").val("");
-					$("#error").show();
-				} 
+					var invalid_field = response.data.field;
+					// highlight, reset, and focus, invalid field
+					$("#" + invalid_field).addClass('invalid').val("").focus();
+					$("#error").html(response.msg).show();
+				}
 				// success
 				else {
-					$("#success").show();
+					// reset fields
+					$("#login_form input").val("");
+					$("#success").html("<img src='http://placedog.com/400/300'>").show();
 					// redirect user on successful login
 					// window.location.replace("#");
 				}

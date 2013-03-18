@@ -16,29 +16,41 @@ class BaseApi {
 	}
 }
 
-session_start();
 
 class LoginAPI extends BaseAPI {
 	
 	public function login($username, $password) {
-		if(empty($username) || empty($password)) {
-			return $this->return_error("Error: username and password are required");
+		if(empty($username)) {
+			return $this->return_error("Error: username is required", array("field" => "username"));
+		}
+		if(empty($password)) {
+			return $this->return_error("Error: password is required", array("field" => "password"));
 		}
 		
-		// validate username and password
-		if(!$this->validate($username, $password)) {
+		// first validate the username, then the password
+		if(!$this->_validate_user($username)) {
 			// invalid login
-			return $this->return_error("Error: username and/or passowrd are invalid");
+			return $this->return_error("Error: username is invalid", array("field" => "username"));
+		} else if(!$this->_validate_pass($password)){
+			// invalid login
+			return $this->return_error("Error: password is invalid", array("field" => "password"));
 		} else {
 			// valid login
-			$_SESSION["username"] = $username;
 			return $this->return_success("Login successful");		
 		}
 	}
 	
-	// validate login credentials
-	private function validate($username, $password) {
-		if($username !== "isocket" || $password !== "password"){
+	// validate username
+	private function _validate_user($username) {
+		if($username !== "isocket"){
+			return false;
+		} else {
+			return true;
+		}		
+	}			
+	// validate password
+	private function _validate_pass($password) {
+		if($password !== "password"){
 			return false;
 		} else {
 			return true;
