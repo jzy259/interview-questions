@@ -49,7 +49,7 @@ Application.LoginView = Backbone.View.extend({
 				else {
 					// reset fields
 					$("#login_form input").val("");
-					$("#success").html("<img src='http://placedog.com/400/300'>").show();
+					$("#success").html("<h1>"+response.msg+"</h1><br /><img src='http://placedog.com/400/300'>").show();
 					// redirect user on successful login
 					// window.location.replace("#");
 				}
