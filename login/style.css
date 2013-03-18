@@ -9,12 +9,14 @@ fieldset label {
 	font-weight: bold;
 	font-family: "Georgia";
 	font-size: 20px;
+	padding-right: 5px;
 }
 fieldset input {
 	font-family: "Georgia";
 	font-size: 17px;
 	color: #377B5E;
 	border-radius: 10px;
+	padding-left: 5px;
 }
 .center {
 	text-align: center;
