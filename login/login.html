@@ -1,39 +1,26 @@
 <!doctype html>
-<head>
-  <meta charset=utf8>
-  <title>Login</title>
-</head>
+<html>
+	<head>
+		<meta charset=utf8>
+		<title>Login</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-<!-- 
-  1. markup a login form
-    - fields: username and password
-    - include fieldset, labels, and placeholders
-    - a submit button
-  2. give it some style (directions in style.css)
--->
+	<body>
 
-<script>
-/* 
-3. submit it via ajax 
+		<div id="main"></div>
 
-- http://interview-php.dev for PHP
-- http://interview-rb.dev for Ruby
-- http://interview-js.dev for NodeJS
-- http://interview-py.dev for Python
+	</body>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
 
-*/
-</script>
+	<script src="javascript/main.js"></script>
+	<script src="javascript/views/login.view.js"></script>
 
-<!-- 4. process in language of your choice (e.g. login.php) -->
-
-<!-- 5. display appropriate message -->
-<div class="alert alert-error">
-  <p>
-    <strong>Oops!</strong> 
-    Your username or password were incorrect.
-  </p>
-</div>
-
-<div class="alert alert-success">
-  <img src=http://placedog.com/400/300 class="interview-success"/>
-</div>
+	<script>
+		$(document).ready(function() {
+			application = new Application.Router();
+		});
+	</script>
+</html>
